@@ -76,9 +76,11 @@
                 @endforeach
                 </tbody>
             </table>
+
             {{-- <div class="px-6 py-4">
                 {{ $departments->links() }}
             </div> --}}
+
         </x-slot>
     </x-jet-action-section>
 

@@ -14,6 +14,7 @@ class DepartmentComponent extends Component
 
     public $departments, $department;
     public $perPage = 10;
+    public $search;
 
     protected $listeners = ['delete'];
 
@@ -38,6 +39,11 @@ class DepartmentComponent extends Component
     public function getDepartments()
     {
         $this->departments = Department::all();
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 
     public function save()
@@ -80,7 +86,7 @@ class DepartmentComponent extends Component
 
     public function render()
     {
-        return view('livewire.admin.department-component')
-            ->layout('layouts.admin');
+        $departments = Department::where('name', 'like', '%' . $this->search . '%')->paginate($this->perPage);
+        return view('livewire.admin.department-component', compact('departments'));
     }
 }
