@@ -48,7 +48,16 @@
                     <th class="py-2">Acción</th>
                 </tr>
                 </thead>
-
+                <div class="mb-4">
+                    <label for="perPage">Departamentos por página:</label>
+                    <select wire:model="perPage" id="perPage" class="ml-2 form-control">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="20">25</option>
+                    </select>
+                </div>
                 <tbody class="divide-y divide-gray-300">
                 @foreach ($departments as $department)
                     <tr>
@@ -67,7 +76,9 @@
                 @endforeach
                 </tbody>
             </table>
-
+            {{-- <div class="px-6 py-4">
+                {{ $departments->links() }}
+            </div> --}}
         </x-slot>
     </x-jet-action-section>
 

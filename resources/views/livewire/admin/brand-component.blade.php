@@ -36,6 +36,16 @@
         </x-slot>
 
         <x-slot name="content">
+            <div class="mb-4">
+                <label for="perPage">Marcas por página:</label>
+                <select wire:model="perPage" id="perPage" class="ml-2 form-control">
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                </select>
+            </div>
 
             <table class="text-gray-600">
                 <thead class="border-b border-gray-300">
@@ -64,7 +74,11 @@
                 @endforeach
                 </tbody>
             </table>
-
+            {{-- @if ($brands->hasPages())
+            <div class="mt-4">
+                {{$brands->links()}}
+            </div>
+            @endif --}}
         </x-slot>
     </x-jet-action-section>
 
